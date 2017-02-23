@@ -1,0 +1,15 @@
+{
+  "name": "mp3-reader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --harmony-async-await index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "text-encoding": "^0.6.4"
+  }
+}
