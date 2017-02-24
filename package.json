@@ -1,15 +1,23 @@
 {
   "name": "mp3-reader",
   "version": "1.0.0",
-  "description": "",
+  "description": "Parses metadata from MP3 files with ID3v2.3.0 and ID3v2.4.0 tags.",
   "main": "index.js",
+  "dependencies": {
+    "text-encoding": "^0.6.4"
+  },
   "scripts": {
     "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nybblr/mp3-reader.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "text-encoding": "^0.6.4"
-  }
+  "bugs": {
+    "url": "https://github.com/nybblr/mp3-reader/issues"
+  },
+  "homepage": "https://github.com/nybblr/mp3-reader#readme"
 }
