@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 let { TextDecoder } = require('text-encoding');
 let fs = require('fs');
 
