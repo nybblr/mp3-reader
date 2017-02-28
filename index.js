@@ -21,6 +21,12 @@ const ID3_ENCODINGS = [
   'utf-16be',
   'utf-8'
 ];
+const LANG_FRAMES = [
+  'USLT',
+  'SYLT',
+  'COMM',
+  'USER'
+];
 
 const file = process.argv[2];
 
@@ -57,10 +63,9 @@ let decodeFrame = (buffer, offset) => {
 
   let contentOffset = offset + HEADER_SIZE + 1;
 
-  let lang = decode('ascii',
-    new Uint8Array(buffer, contentOffset, 3));
-
-  if (lang.match(/^[a-z]+$/)) {
+  let lang;
+  if (LANG_FRAMES.includes(id)) {
+    lang = decode('ascii', new Uint8Array(buffer, contentOffset, 3));
     contentOffset += 3;
     contentSize -= 3;
   }
