@@ -41,7 +41,7 @@ fs.readFile(file, (_, { buffer }) => {
     let frame = decodeFrame(buffer, offset);
     if (!frame) { break; }
     console.log(`${frame.id}: ${frame.value.length > 200 ? '...' : frame.value}`);
-    offset = offset + frame.size;
+    offset += frame.size;
   }
 });
 
@@ -61,8 +61,8 @@ let decodeFrame = (buffer, offset) => {
     new Uint8Array(buffer, contentOffset, 3));
 
   if (lang.match(/^[a-z]+$/)) {
-    contentOffset = contentOffset + 3;
-    contentSize = contentSize - 3;
+    contentOffset += 3;
+    contentSize -= 3;
   }
 
   let value = decode(ID3_ENCODINGS[encoding],
