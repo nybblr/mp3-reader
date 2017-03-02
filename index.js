@@ -30,7 +30,10 @@ const LANG_FRAMES = [
 
 const file = process.argv[2];
 
-fs.readFile(file, (_, { buffer }) => {
+fs.readFile(file, (err, data) => {
+  if (err) { throw err; }
+
+  let { buffer } = data;
   let header = new DataView(buffer, 0, HEADER_SIZE);
 
   let major = header.getUint8(3);
