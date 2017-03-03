@@ -55,14 +55,14 @@ fs.readFile(file, (err, data) => {
 });
 
 let decodeFrame = (buffer, offset) => {
+  let header = new DataView(buffer, offset, HEADER_SIZE + 1);
+  if (header.getUint8(0) === 0) { return; }
+
   let id = decode('ascii', new Uint8Array(buffer, offset, 4));
-  if (id === '\0\0\0\0') { return; }
 
-  let view = new DataView(buffer, offset, HEADER_SIZE + 1);
-
-  let size = view.getUint32(4);
+  let size = header.getUint32(4);
   let contentSize = size - 1;
-  let encoding = view.getUint8(HEADER_SIZE);
+  let encoding = header.getUint8(HEADER_SIZE);
 
   let contentOffset = offset + HEADER_SIZE + 1;
 
